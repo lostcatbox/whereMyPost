@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/needThing.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/post/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/post/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="7fccfe62-9ea2-459f-93fc-b3ebe66bfef5" />
   <component name="ProjectId" id="1W4eJ9wIWp4reO6iSvcsi4iZl2e" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -89,7 +89,10 @@
       <workItem from="1578413221223" duration="171000" />
       <workItem from="1578413411387" duration="570000" />
       <workItem from="1578413994973" duration="321000" />
-      <workItem from="1578448862129" duration="9057000" />
+      <workItem from="1578448862129" duration="9938000" />
+      <workItem from="1578472157893" duration="1793000" />
+      <workItem from="1578649319700" duration="7000" />
+      <workItem from="1578649338188" duration="1084000" />
     </task>
     <servers />
   </component>
