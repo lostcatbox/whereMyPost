@@ -4,6 +4,5 @@ from . import utils
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('crawling/', utils.py)
-
+    path('crawling/', utils.postview(), name='crawling'),
 ]
