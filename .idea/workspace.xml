@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/post/templates/post/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/post/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/post/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +102,8 @@
       <workItem from="1578649319700" duration="7000" />
       <workItem from="1578649338188" duration="8099000" />
       <workItem from="1578908075454" duration="2875000" />
-      <workItem from="1578911070521" duration="1288000" />
+      <workItem from="1578911070521" duration="4324000" />
+      <workItem from="1578988433701" duration="325000" />
     </task>
     <servers />
   </component>
@@ -135,5 +139,9 @@
     </state>
     <state x="443" y="162" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1578910636039" />
     <state x="923" y="190" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1578413442169" />
+    <state x="684" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1578988189980">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="684" y="224" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1578988189980" />
   </component>
 </project>

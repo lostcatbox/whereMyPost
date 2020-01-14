@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+        <form action = '{% url 'post:index' %}' accept-charset="utf-8" name = "post_infor" method = "get">
+            <fieldset style = "width:150">
+                <legend>택배 조회</legend>
+                    회사 : <select name="post_company">
+                                  <option value="CJ대한통운"> CJ대한통운 </option>
+                                  <option value="우체국택배"> 우체국택배 </option>
+                                  <option value="한진택배"> 한진택배 </option>
+                                  <option value="롯데택배"> 롯데택배 </option>
+                                  <option value="로젠택배"> 로젠택배 </option>
+                                  <option value="CVSnet"> CVSnet 편의점택배 </option>
+                                  <option value="CU"> CU 편의점택배 </option>
+                                  <option value="대신택배"> 대신택배 </option>
+                                  <option value="일양로지스"> 일양로지스 </option>
+                                  <option value="합동택배"> 합동택배 </option>
+                                  <option value="건영택배"> 건영택배 </option>
+                                  <option value="천일택배"> 천일택배 </option>
+                                  <option value="한덱스"> 한덱스 </option>
+
+
+                                  <option value="EMS"> EMS </option>
+                                  <option value="DHL"> DHL </option>
+                                  <option value="Fedex"> Fedex </option>
+
+                          </select>
+
+                    운송장번호 : <input type = "text" name = "post_number"/><br><br>
+                    <input type = "submit" value = "조회"/>
+
+        </form>
+</body>
+</html>

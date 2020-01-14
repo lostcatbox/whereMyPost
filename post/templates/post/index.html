@@ -5,8 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-{{ post }}
+<fieldset style = "width:150">
+<legend>택배 데이터</legend>
+받아온 데이터 : {{ post_list }}
 
-{{ post_list }}
+
+
+<form action = '{% url 'post:home' %}' accept-charset="utf-8" name = "post_backtohome" method = "get">
+                    <input type = "submit" value = "돌아가기"/>
+
+        </form>
 </body>
 </html>
