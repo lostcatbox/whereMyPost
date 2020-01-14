@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 
 def postview(post_number='349159576510'):
-    driver = webdriver.Chrome('../chromedriver')
+    driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
     driver.implicitly_wait(15)
     driver.get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
 
@@ -25,3 +25,4 @@ def postview(post_number='349159576510'):
         post_list.append(x.text.strip())
 
     print(post_list)
+    return post_list
