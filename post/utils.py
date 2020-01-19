@@ -31,3 +31,86 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
 
         print(post_list)
         return post_list
+
+
+    if post_company == 'CU':  #6357619516
+
+        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
+        driver.implicitly_wait(15)
+        driver.get('https://www.cupost.co.kr/postbox/delivery/local.cupost')
+
+
+        driver.find_element_by_id('invoice_no').send_keys(post_number)
+
+        driver.find_element_by_xpath('//*[@id="form"]/div/div/a').click()
+
+        iframe = driver.find_elements_by_tag_name('iframe')
+        driver.switch_to.frame(iframe[0])
+
+        print(driver.page_source)
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+        post_detail = soup.select('body > div > table.tepTb.mt20 > tbody > tr')
+
+        post_list = []
+
+        for x in post_detail:
+            post_list.append(x.text.strip())
+
+        driver.close()
+
+        print(post_list)
+        return post_list
+
+    if post_company == 'CJ대한통운':
+
+        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
+        driver.implicitly_wait(15)
+        driver.get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
+
+
+        driver.find_element_by_id('paramInvcNo').send_keys(post_number)
+
+        driver.find_element_by_xpath('//*[@id="btnSubmit"]').click()
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+        post_detail = soup.select('#statusDetail > tr')
+
+
+        post_list = []
+
+        for x in post_detail:
+            post_list.append(x.text.strip())
+
+        driver.close()
+
+        print(post_list)
+        return post_list
+
+    if post_company == 'CJ대한통운':
+
+        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
+        driver.implicitly_wait(15)
+        driver.get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
+
+
+        driver.find_element_by_id('paramInvcNo').send_keys(post_number)
+
+        driver.find_element_by_xpath('//*[@id="btnSubmit"]').click()
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+        post_detail = soup.select('#statusDetail > tr')
+
+
+        post_list = []
+
+        for x in post_detail:
+            post_list.append(x.text.strip())
+
+        driver.close()
+
+        print(post_list)
+        return post_list

@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ㅇㅇ.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/needThing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/needThing.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/post/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/post/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +104,7 @@
       <workItem from="1578988433701" duration="973000" />
       <workItem from="1578989465086" duration="3989000" />
       <workItem from="1579078381634" duration="1279000" />
+      <workItem from="1579314643535" duration="7374000" />
     </task>
     <servers />
   </component>
@@ -138,6 +140,10 @@
     </state>
     <state x="443" y="162" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1578910636039" />
     <state x="923" y="190" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1578413442169" />
+    <state x="58" y="80" width="702" height="875" key="dock-window-1" timestamp="1579438629669">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="58" y="80" width="702" height="875" key="dock-window-1/0.23.1920.1057@0.23.1920.1057" timestamp="1579438629669" />
     <state x="684" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1578988189980">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
