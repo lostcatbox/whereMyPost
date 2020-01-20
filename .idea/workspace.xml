@@ -102,7 +102,7 @@
       <workItem from="1578988433701" duration="973000" />
       <workItem from="1578989465086" duration="3989000" />
       <workItem from="1579078381634" duration="1279000" />
-      <workItem from="1579314643535" duration="7938000" />
+      <workItem from="1579314643535" duration="10130000" />
     </task>
     <servers />
   </component>
@@ -138,10 +138,15 @@
     </state>
     <state x="443" y="162" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1578910636039" />
     <state x="923" y="190" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1578413442169" />
-    <state x="58" y="80" width="702" height="875" key="dock-window-1" timestamp="1579438629669">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="677" y="25" width="702" height="875" key="dock-window-1" timestamp="1579486792028">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="677" y="25" width="702" height="875" key="dock-window-1/0.23.1440.877@0.23.1440.877" timestamp="1579486792028" />
     <state x="58" y="80" width="702" height="875" key="dock-window-1/0.23.1920.1057@0.23.1920.1057" timestamp="1579438629669" />
+    <state x="776" y="23" width="555" height="857" key="dock-window-2" timestamp="1579487943187">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="776" y="23" width="555" height="857" key="dock-window-2/0.23.1440.877@0.23.1440.877" timestamp="1579487943187" />
     <state x="684" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1578988189980">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
