@@ -239,10 +239,17 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
 
 
 
-        # headers = {
+        # 참고 사이트
+        # https: // www.logistics.dhl / kr - ko / home / tracking / tracking - express.html?submit = 1 & tracking - id =
+        # https: // www.logistics.dhl / utapi?trackingNumber = GM295322752002026135 & language = ko & requesterCountryCode = KR
+        #
+
+
+        #headers = {
         #     'Referer': 'https://www.logistics.dhl/kr-ko/home/tracking/tracking-express.html?submit=1&tracking-id=7694274276',
         #     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36',
         # }
+        #
         #
         # params = (
         #     ('trackingNumber', post_number),
