@@ -49,8 +49,6 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
         iframe = driver.find_elements_by_tag_name('iframe')
         driver.switch_to.frame(iframe[0])
 
-        print(driver.page_source)
-
         html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
         post_detail = soup.select('body > div > table.tepTb.mt20 > tbody > tr')
@@ -82,7 +80,6 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
         driver.find_element_by_xpath('//*[@id="frmDomRigiTrace"]/div/dl/dd/a').click()
 
         html = driver.page_source
-        print(html)
         soup = BeautifulSoup(html, 'html.parser')
         post_detail = soup.select('#print > div.h4_wrap.ma_t_5 > table > tbody > tr > td')
 
@@ -203,24 +200,61 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
         print(post_list)
         return post_list
 
-    if post_company == 'DHL':    #7694274276 #GM295322752002026135
+    if post_company == 'DHL express':    #7694274276 #GM295322752002026135
 
-        headers = {
-            'Referer': 'https://www.logistics.dhl/kr-ko/home/tracking/tracking-express.html?submit=1&tracking-id=7694274276',
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36',
-        }
+        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
+        driver.implicitly_wait(15)
+        driver.get('http://www.dhl.co.kr/ko/express.html')
 
-        params = (
-            ('trackingNumber', post_number),
-            ('language', 'ko'),
-            ('requesterCountryCode', 'KR'),
-        )
 
-        json_data = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+        driver.find_element_by_id('AWB_containerleftpar_minitaskkcenter_transparsys_expandablelink_fb5b_insideparsys_fasttrack_984e').send_keys(post_number)
 
-        print(json_data['events'])
+        driver.find_element_by_xpath('//*[@id="trackbut_containerleftpar_minitaskkcenter_transparsys_expandablelink_fb5b_insideparsys_fasttrack_984e"]').click()
+        time.sleep(10)
 
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+        post_detail = soup.select('body > div.main.facelift.tracking-progress > div.main_area > div.content_main_container > div.content_main_index > div.container > div > div.section.shipmenttracking.tracking.dhl_classes_comp_tracking_params > div.tracking-results.dhl_classes_comp_tracking_results > div.tracking-result.express > table.result-checkpoints.show.result-has-pieces > tbody > tr')
+
+
+        post_list = []
+
+        for x in post_detail:
+            post_list.append(x.text.strip())
+
+        driver.close()
+
+        print(post_list)
+        return post_list
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # headers = {
+        #     'Referer': 'https://www.logistics.dhl/kr-ko/home/tracking/tracking-express.html?submit=1&tracking-id=7694274276',
+        #     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36',
+        # }
         #
+        # params = (
+        #     ('trackingNumber', post_number),
+        #     ('language', 'ko'),
+        #     ('requesterCountryCode', 'KR'),
+        # )
+        #
+        # json_data = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+        #
+        # print(json_data)
+        #
+        # #
         #
         # post_list = []
         #
@@ -243,12 +277,10 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
         time.sleep(6)
 
         html = driver.page_source
-        print(html)
         # http://www.dhl-usa.com/en/express/tracking/tracking_tools.html
         # 오픈 api 주소
         soup = BeautifulSoup(html, 'html.parser')
         post_detail = soup.select('#container > div > div > div.trackingRootViewMain_TrackingView > div > div.tvc_detailPage_area > div:nth-child(2) > div.tvc_trackDetailView_area > div > div.trackDetailViewController_area.trackDetailSection > div > div.dp_snapshot_area > div > div.redesignSnapshotTVC.fxg-wrapper.container > h1 > div')
-        print(post_detail)
 
 
         post_list = []
