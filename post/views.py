@@ -1,4 +1,9 @@
+import json
+from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+import time
+
 from .utils import postview
 
 def index(request):
@@ -10,6 +15,34 @@ def index(request):
     return render(request, 'post/index.html', {'post':'고양이', 'post_list':data})
 # Create your views here.
 
+@csrf_exempt
 def homepage(request):
+
+
+
+    if (request.method == 'POST'):
+
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        content = body["action"]
+        post_company = content["params"]["post_company"]
+        post_number = content["params"]["post_number"]
+        # post_detail = postview(post_company, post_number)
+        print(post_number)
+        print(post_company)
+        # print(post_detail)
+
+        time.sleep(2)
+
+        return JsonResponse(
+            {
+                "version": "2.0",
+                "data": {
+                    "post_company": post_company,
+                    "post_number": post_number,
+                    "post_detail": "post_url",
+                }
+            }
+        )
 
     return render(request, 'post/home.html')

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whereMyPost/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whereMyPost/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,8 @@
       <workItem from="1578988433701" duration="973000" />
       <workItem from="1578989465086" duration="3989000" />
       <workItem from="1579078381634" duration="1279000" />
-      <workItem from="1579314643535" duration="23226000" />
+      <workItem from="1579314643535" duration="24554000" />
+      <workItem from="1580550467288" duration="3871000" />
     </task>
     <servers />
   </component>
@@ -148,9 +149,9 @@
     </state>
     <state x="720" y="23" width="720" height="877" key="dock-window-2/0.23.1440.877@0.23.1440.877" timestamp="1579665885387" />
     <state x="720" y="203" width="720" height="877" key="dock-window-2/0.23.1920.1057@0.23.1920.1057" timestamp="1579611745311" />
-    <state x="684" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1578988189980">
+    <state x="684" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1580550579928">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="684" y="224" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1578988189980" />
+    <state x="684" y="224" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1580550579928" />
   </component>
 </project>
