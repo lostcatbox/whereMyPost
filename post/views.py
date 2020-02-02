@@ -12,7 +12,7 @@ def index(request):
     data = postview(post_company, post_number)
 
 
-    return render(request, 'post/index.html', {'post':'고양이', 'post_list':data})
+    return render(request, 'post/index.html', {'post_all_detail': data})
 # Create your views here.
 
 @csrf_exempt
@@ -27,12 +27,12 @@ def homepage(request):
         content = body["action"]
         post_company = content["params"]["post_company"]
         post_number = content["params"]["post_number"]
-        # post_detail = postview(post_company, post_number)
+        data = postview(post_company, post_number)
         print(post_number)
         print(post_company)
-        # print(post_detail)
+        print(data)
 
-        time.sleep(2)
+        time.sleep(1)
 
         return JsonResponse(
             {
@@ -40,7 +40,7 @@ def homepage(request):
                 "data": {
                     "post_company": post_company,
                     "post_number": post_number,
-                    "post_detail": "post_url",
+                    "post_detail": data,
                 }
             }
         )

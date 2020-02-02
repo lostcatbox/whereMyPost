@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/requests_test.py-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/utils_by_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requests_test.py.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/needThing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/needThing.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/post/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/post/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/post/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/post/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +110,8 @@
       <workItem from="1578989465086" duration="3989000" />
       <workItem from="1579078381634" duration="1279000" />
       <workItem from="1579314643535" duration="24554000" />
-      <workItem from="1580550467288" duration="3871000" />
+      <workItem from="1580550467288" duration="6491000" />
+      <workItem from="1580616571163" duration="7204000" />
     </task>
     <servers />
   </component>
@@ -114,10 +122,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578907441739">
+    <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580557287699">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1578907441739" />
+    <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1580557287698" />
     <state width="918" height="230" key="GridCell.Tab.0.bottom" timestamp="1578908060475">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
