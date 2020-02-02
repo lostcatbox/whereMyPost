@@ -19,7 +19,6 @@ def index(request):
 def homepage(request):
 
 
-
     if (request.method == 'POST'):
 
         body_unicode = request.body.decode('utf-8')
