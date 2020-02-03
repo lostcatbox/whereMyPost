@@ -10,59 +10,29 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
 
     if post_company == 'CJ대한통운':
 
-        s = requests.Session()
-        req = s.get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
-        html = req.text
+        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
+        driver.implicitly_wait(15)
+        driver.get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
+
+        driver.find_element_by_id('paramInvcNo').send_keys(post_number)
+
+        driver.find_element_by_xpath('//*[@id="btnSubmit"]').click()
+
+        driver.switch_to.frame(iframe[0])
+
+        html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
-        print(soup)
-        csrf = soup.find('input', {'name': '_csrf'})
-        print(csrf['value'])
+        post_detail = soup.select('#statusDetail > tr')
 
+        post_list = []
 
-        #
-        # cookies = {
-        #     '_ga': 'GA1.2.537669306.1578450884',
-        #     'SCOUTER': 'x54k333pitk7sg',
-        #     'cjlogisticsFrontLangCookie': 'ko',
-        #     '_gid': 'GA1.2.1437281108.1580557487',
-        #     'JSESSIONID': 'D6FBC79B7049D12D890C483866195FC0.front11',
-        # }
+        for x in post_detail:
+            post_list.append(x.text.strip())
 
-        headers = {
-            'Connection': 'keep-alive',
-            'Pragma': 'no-cache',
-            'Cache-Control': 'no-cache',
-            'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'Origin': 'https://www.cjlogistics.com',
-            'X-Requested-With': 'XMLHttpRequest',
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Sec-Fetch-Site': 'same-origin',
-            'Sec-Fetch-Mode': 'cors',
-            'Referer': 'https://www.cjlogistics.com/ko/tool/parcel/tracking',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
-        }
+        driver.close()
 
-        data = {
-            '_csrf': csrf['value'],
-            'paramInvcNo': post_number
-        }
-
-        html = s.post('https://www.cjlogistics.com/ko/tool/parcel/tracking-detail', headers=headers,
-                             data=data)
-        raw = html.json()
-        detail = raw["parcelDetailResultMap"]["resultList"]
-        print(detail)
-
-        post_infor = detail[0]["crgNm"]
-        post_arrived_time = detail[0]["dTime"]
-        post_place = detail[0]["regBranNm"]
-        post_status = detail[0]["scanNm"]
-
-        post_all_detail = [post_infor, post_arrived_time ,post_place, post_status]
-
-        return post_all_detail
+        print(post_list)
+        return post_list
 
 
 

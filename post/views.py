@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import time
 
-from .utils import postview
+from .utils_by_api import postview
 
 def index(request):
     post_company = request.GET['post_company']
@@ -24,14 +24,13 @@ def homepage(request):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         content = body["action"]
-        post_company = content["params"]["post_company"]
-        post_number = content["params"]["post_number"]
+        post_company = content["detailParams"]["post_company"]["value"]
+        post_number = content["detailParams"]["post_number"]["value"]
         data = postview(post_company, post_number)
         print(post_number)
         print(post_company)
         print(data)
 
-        time.sleep(1)
 
         return JsonResponse(
             {
