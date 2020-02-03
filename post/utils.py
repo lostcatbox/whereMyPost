@@ -9,13 +9,24 @@ import requests
 def postview(post_company='CJ대한통운', post_number='349159576510'):
 
     if post_company == 'CJ대한통운':
-        cookies = {
-            '_ga': 'GA1.2.537669306.1578450884',
-            'SCOUTER': 'x54k333pitk7sg',
-            'cjlogisticsFrontLangCookie': 'ko',
-            '_gid': 'GA1.2.1437281108.1580557487',
-            'JSESSIONID': 'FDCC027CC8C8594AF3498755ABFDB7D5.front11',
-        }
+
+        s = requests.Session()
+        req = s.get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
+        html = req.text
+        soup = BeautifulSoup(html, 'html.parser')
+        print(soup)
+        csrf = soup.find('input', {'name': '_csrf'})
+        print(csrf['value'])
+
+
+        #
+        # cookies = {
+        #     '_ga': 'GA1.2.537669306.1578450884',
+        #     'SCOUTER': 'x54k333pitk7sg',
+        #     'cjlogisticsFrontLangCookie': 'ko',
+        #     '_gid': 'GA1.2.1437281108.1580557487',
+        #     'JSESSIONID': 'D6FBC79B7049D12D890C483866195FC0.front11',
+        # }
 
         headers = {
             'Connection': 'keep-alive',
@@ -34,12 +45,11 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
         }
 
         data = {
-            '_csrf': '11a1b770-fb54-4112-aa95-c68e9fc3d7de',
+            '_csrf': csrf['value'],
             'paramInvcNo': post_number
         }
 
-        html = requests.post('https://www.cjlogistics.com/ko/tool/parcel/tracking-detail', headers=headers,
-                             cookies=cookies,
+        html = s.post('https://www.cjlogistics.com/ko/tool/parcel/tracking-detail', headers=headers,
                              data=data)
         raw = html.json()
         detail = raw["parcelDetailResultMap"]["resultList"]
