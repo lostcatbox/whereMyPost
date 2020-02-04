@@ -8,7 +8,7 @@ import requests
 
 def postview(post_company, post_number):
 
-    if post_company == 'CJ대한통운':
+    if (post_company == 'CJ대한통운') or (post_company == 'CU편의점택배'):
 
         s = requests.Session()
         req = s.get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
@@ -16,16 +16,6 @@ def postview(post_company, post_number):
         soup = BeautifulSoup(html, 'html.parser')
         csrf = soup.find('input', {'name': '_csrf'})
         print(csrf['value'])
-
-
-        #
-        # cookies = {
-        #     '_ga': 'GA1.2.537669306.1578450884',
-        #     'SCOUTER': 'x54k333pitk7sg',
-        #     'cjlogisticsFrontLangCookie': 'ko',
-        #     '_gid': 'GA1.2.1437281108.1580557487',
-        #     'JSESSIONID': 'D6FBC79B7049D12D890C483866195FC0.front11',
-        # }
 
         headers = {
             'Connection': 'keep-alive',
@@ -65,60 +55,33 @@ def postview(post_company, post_number):
         return post_all_detail
 
 
-    if post_company == 'CU':
-
-        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
-        driver.implicitly_wait(15)
-        driver.get('https://www.cupost.co.kr/postbox/delivery/local.cupost')
-
-        driver.find_element_by_id('invoice_no').send_keys(post_number)
-
-        driver.find_element_by_xpath('//*[@id="form"]/div/div/a').click()
-
-        iframe = driver.find_elements_by_tag_name('iframe')
-        driver.switch_to.frame(iframe[0])
-
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
-        post_detail = soup.select('body > div > table.tepTb.mt20 > tbody > tr')
-
-        post_list = []
-
-        for x in post_detail:
-            post_list.append(x.text.strip())
-
-        driver.close()
-
-        print(post_list)
-        return post_list
-
     if post_company == '우체국택배':  # 1415705137861
-        '''
-        #print > div.h4_wrap.ma_t_5 > table > tbody > tr:nth-child(1)
 
-        '''
+        s = requests.Session()
+        req = s.get('https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm')
 
-        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
-        driver.implicitly_wait(15)
-        driver.get('https://service.epost.go.kr/iservice/usr/trace/usrtrc001k01.jsp')
+        data = {
+            'sid1': post_number,
+        }
 
-        driver.find_element_by_id('sid1').send_keys(post_number)
-
-        driver.find_element_by_xpath('//*[@id="frmDomRigiTrace"]/div/dl/dd/a').click()
-
-        html = driver.page_source
+        req = s.post('https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm',
+                     data=data)
+        html = req.text
         soup = BeautifulSoup(html, 'html.parser')
+        s.cookies.clear()
         post_detail = soup.select('#print > div.h4_wrap.ma_t_5 > table > tbody > tr > td')
 
         post_list = []
 
         for x in post_detail:
-            post_list.append(x.text.strip())
+            post_list.append(
+                x.text.replace("\t", "").replace("/n", "").replace("\n", "").replace("\xa0", "").replace(" ", ""))
 
-        driver.close()
+        post_all_detail = post_list[-4:]
 
-        print(post_list)
-        return post_list
+        print(post_all_detail)
+
+        return post_all_detail
 
     if post_company == '한진택배':  # 507696243040
 

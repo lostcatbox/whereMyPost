@@ -36,7 +36,7 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
 
 
 
-    if post_company == 'CU':
+    if post_company == 'CU편의점택배':
 
         driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
         driver.implicitly_wait(15)
