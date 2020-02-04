@@ -85,16 +85,21 @@ def postview(post_company, post_number):
 
     if post_company == '한진택배':  # 507696243040
 
-        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
-        driver.implicitly_wait(15)
-        driver.get('https://www.hanjin.co.kr/Delivery_html/inquiry/personal_inquiry.jsp')
+        s = requests.Session()
+        req = s.get('https://www.hanjin.co.kr/Delivery_html/')
 
-        driver.find_element_by_id('wbl_num').send_keys(post_number)
+        data = {
+            'sel_wbl_num1': '0',
+            'wbl_num': '507696243040'
+        }
+        params = (
+            ('wbl_num', '507696243040'),
+        )
 
-        driver.find_element_by_xpath('//*[@id="form1"]/div[2]/a[1]').click()
-
-        html = driver.page_source
+        req = s.post('https://www.hanjin.co.kr/Delivery_html/inquiry/result_waybill.jsp', params=params, data=data)
+        html = req.text
         soup = BeautifulSoup(html, 'html.parser')
+        s.cookies.clear()
         post_detail = soup.select('#result_waybill2 > table > tbody > tr > td')
 
         post_list = []
@@ -102,60 +107,59 @@ def postview(post_company, post_number):
         for x in post_detail:
             post_list.append(x.text.strip())
 
-        driver.close()
+        post_all_detail = post_list[-4:]
 
-        print(post_list)
-        return post_list
+        print(post_all_detail)
+        return post_all_detail
 
     if post_company == '롯데택배':  # 233548940306
 
-        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
-        driver.implicitly_wait(15)
-        driver.get('https://www.lotteglogis.com/home/reservation/tracking/index')
+        s = requests.Session()
+        req = s.get('https://www.lotteglogis.com/home/reservation/tracking/')
 
-        driver.find_element_by_id('InvNo').send_keys(post_number)
+        data = {
+            'InvNo': post_number,
+        }
 
-        driver.find_element_by_xpath('//*[@id="contents"]/div/div[2]/div[3]/button').click()
-
-        time.sleep(7)
-
-        html = driver.page_source
+        req = s.post('https://www.lotteglogis.com/home/reservation/tracking/linkView/',
+                     data=data)
+        html = req.text
         soup = BeautifulSoup(html, 'html.parser')
         post_detail = soup.select('#contents > div > div.contArea > table > tbody > tr > td')
 
         post_list = []
 
         for x in post_detail:
-            post_list.append(x.text.strip())
+            post_list.append(
+                x.text.replace("\r", "").replace("\t", "").replace("\n", "").replace("\xa0", "").replace(" ", ""))
+        post_all_detail = post_list[-4:]
 
-        driver.close()
+        print(post_all_detail)
 
-        print(post_list)
-        return post_list
+        return post_all_detail
 
     if post_company == '로젠택배':  # 95638397046
 
-        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
-        driver.implicitly_wait(15)
-        driver.get('https://www.ilogen.com/m/personal/tkSearch')
+        s = requests.Session()
+        req = s.get('https://www.ilogen.com/web/personal/tkSearch')
+        post_number = '/' + '95638397046'
 
-        driver.find_element_by_id('slipNo').send_keys(post_number)
-
-        driver.find_element_by_xpath('//*[@id="slipNoBtn"]').click()
-
-        html = driver.page_source
+        req = s.get('https://www.ilogen.com/m/personal/trace' + post_number)
+        html = req.text
         soup = BeautifulSoup(html, 'html.parser')
-        post_detail = soup.select('body > div > div > table.horizonTable > tbody > tr > td')
+        s.cookies.clear()
+        post_detail = soup.select('tbody > tr> td')
 
         post_list = []
 
         for x in post_detail:
-            post_list.append(x.text.strip())
+            post_list.append(
+                x.text.replace("\r", "").replace("\t", "").replace("\n", "").replace(" ", ""))
 
-        driver.close()
+        post_all_detail = post_list[-6:]
 
-        print(post_list)
-        return post_list
+        print(post_all_detail)
+        return post_all_detail
 
     if post_company == 'EMS':  # EB709865140CN
 
