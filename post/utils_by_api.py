@@ -4,6 +4,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
 import requests
+import re
 
 
 def postview(post_company, post_number):
@@ -163,100 +164,109 @@ def postview(post_company, post_number):
 
     if post_company == 'EMS':  # EB709865140CN
 
-        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
-        driver.implicitly_wait(15)
-        driver.get('https://service.epost.go.kr/trace.RetrieveEmsRigiTrace.comm')
+        s = requests.Session()
 
-        driver.find_element_by_id('POST_CODE').send_keys(post_number)
+        headers = {
+            'Connection': 'keep-alive',
+            'Pragma': 'no-cache',
+            'Cache-Control': 'no-cache',
+            'Origin': 'https://service.epost.go.kr',
+            'Upgrade-Insecure-Requests': '1',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Sec-Fetch-User': '?1',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Sec-Fetch-Site': 'same-origin',
+            'Sec-Fetch-Mode': 'navigate',
+            'Referer': 'https://service.epost.go.kr/trace.RetrieveEmsRigiTrace.comm',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
+        }
 
-        driver.find_element_by_xpath('//*[@id="frmEmsRigiTrace"]/div/dl/dd/a').click()
+        req = s.get('https://service.epost.go.kr/trace.RetrieveEmsRigiTrace.comm', headers=headers)
 
-        html = driver.page_source
+        data = {
+            'POST_CODE': 'EB709865140CN',
+            'displayHeader': ''
+        }
+
+        req = s.post('https://service.epost.go.kr/trace.RetrieveEmsRigiTraceList.comm', headers=headers, data=data)
+
+        html = req.text
         soup = BeautifulSoup(html, 'html.parser')
-        post_detail = soup.select('#print > table.table_col.detail_off.ma_t_5 > tbody > tr > td')
+
+        post_detail = soup.select('#print > table.table_col.detail_off.ma_t_5 > tr ')
 
         post_list = []
 
         for x in post_detail:
-            post_list.append(x.text.strip())
+            post_list.append(x.text.replace("\r", "").replace("\t", "").replace("\n", "").replace("\xa0", ""))
 
-        driver.close()
+        post_all_detail = post_list[-1:]
 
-        print(post_list)
-        return post_list
+        print(post_all_detail)
+        return post_all_detail
 
-    if post_company == 'DHL express':  # 7694274276 #GM295322752002026135
+    if post_company == 'DHL':  # 7694274276 #GM295322752002026135
 
-        '''
-        https://www.logistics.dhl/utapi?trackingNumber=7694274276&language=ko&requesterCountryCode=KR
-        '''
+        headers = {
+            'Connection': 'keep-alive',
+            'Pragma': 'no-cache',
+            'Cache-Control': 'no-cache',
+            'Upgrade-Insecure-Requests': '1',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Sec-Fetch-User': '?1',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-Mode': 'navigate',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
+        }
+
+        params = (
+            ('trackingNumber', post_number),
+            ('language', 'ko'),
+            ('requesterCountryCode', 'KR'),
+        )
+
+        req = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+        json = req.json()["shipments"][0]
+        service_name = json["service"]
+        timestamp = json["status"]["timestamp"]
+        status = json["status"]["status"]
+
+        post_all_detail = [service_name, timestamp, status]
+        print(post_all_detail)
+
+        return post_all_detail
 
 
-        post_list = []
-
-        for x in post_detail:
-            post_list.append(x.text.strip())
-
-        print(post_list)
-        return post_list
-
-        # 참고 사이트
-        # https: // www.logistics.dhl / kr - ko / home / tracking / tracking - express.html?submit = 1 & tracking - id =
-        # https: // www.logistics.dhl / utapi?trackingNumber = GM295322752002026135 & language = ko & requesterCountryCode = KR
-        #
-
-        # headers = {
-        #     'Referer': 'https://www.logistics.dhl/kr-ko/home/tracking/tracking-express.html?submit=1&tracking-id=7694274276',
-        #     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36',
-        # }
-        #
-        #
-        # params = (
-        #     ('trackingNumber', post_number),
-        #     ('language', 'ko'),
-        #     ('requesterCountryCode', 'KR'),
-        # )
-        #
-        # json_data = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
-        #
-        # print(json_data)
-        #
-        # #
-        #
-        # post_list = []
-        #
-        # for x in post_detail:
-        #     post_list.append(x.text.strip())
-        #
-        # print(post_list)
-        # return post_list
-
-    if post_company == 'Fedex':  # 110738916651
-
-        driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
-        driver.implicitly_wait(15)
-        driver.get('https://www.fedex.com/ko-kr/tracking.html')
-
-        driver.find_element_by_id('track_inbox_track_numbers_area').send_keys(post_number)
-
-        driver.find_element_by_xpath('//*[@id="number"]/div/form/div/div/form/div[1]/div/button').click()
-        time.sleep(6)
-
-        html = driver.page_source
-        # http://www.dhl-usa.com/en/express/tracking/tracking_tools.html
-        # 오픈 api 주소
-        soup = BeautifulSoup(html, 'html.parser')
-        post_detail = soup.select(
-            '#container > div > div > div.trackingRootViewMain_TrackingView > div > div.tvc_detailPage_area > div:nth-child(2) > div.tvc_trackDetailView_area > div > div.trackDetailViewController_area.trackDetailSection > div > div.dp_snapshot_area > div > div.redesignSnapshotTVC.fxg-wrapper.container > h1 > div')
-
-        post_list = []
-
-        for x in post_detail:
-            post_list.append(x.text.strip())
-
-        driver.close()
-
-        print(post_list)
-        return post_list
+    # if post_company == 'Fedex':  # 110738916651
+    #
+    #     driver = webdriver.Chrome('/Users/lostcatbox/myproject/whereMyPost/chromedriver')
+    #     driver.implicitly_wait(15)
+    #     driver.get('https://www.fedex.com/ko-kr/tracking.html')
+    #
+    #     driver.find_element_by_id('track_inbox_track_numbers_area').send_keys(post_number)
+    #
+    #     driver.find_element_by_xpath('//*[@id="number"]/div/form/div/div/form/div[1]/div/button').click()
+    #     time.sleep(6)
+    #
+    #     html = driver.page_source
+    #     # http://www.dhl-usa.com/en/express/tracking/tracking_tools.html
+    #     # 오픈 api 주소
+    #     soup = BeautifulSoup(html, 'html.parser')
+    #     post_detail = soup.select(
+    #         '#container > div > div > div.trackingRootViewMain_TrackingView > div > div.tvc_detailPage_area > div:nth-child(2) > div.tvc_trackDetailView_area > div > div.trackDetailViewController_area.trackDetailSection > div > div.dp_snapshot_area > div > div.redesignSnapshotTVC.fxg-wrapper.container > h1 > div')
+    #
+    #     post_list = []
+    #
+    #     for x in post_detail:
+    #         post_list.append(x.text.strip())
+    #
+    #     driver.close()
+    #
+    #     print(post_list)
+    #     return post_list
 
 
