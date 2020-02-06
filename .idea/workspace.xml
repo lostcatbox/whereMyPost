@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/j.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/requests_test.py-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/requests_test.py-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/utils_by_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/utils_by_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requests_test.py.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/requests_test.py.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +107,7 @@
       <workItem from="1580616571163" duration="9838000" />
       <workItem from="1580705732731" duration="9295000" />
       <workItem from="1580814773477" duration="54000" />
-      <workItem from="1580827744263" duration="11965000" />
+      <workItem from="1580827744263" duration="12333000" />
     </task>
     <servers />
   </component>
