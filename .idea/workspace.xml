@@ -2,8 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.ebextensions/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ebextensions/django.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/install" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/PyYAML-5.2.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/awscli-1.17.12.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/botocore-1.14.12.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/colorama-0.4.1.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/colorama-0.4.3.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/docutils-0.15.2.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/futures-3.3.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/jmespath-0.9.4.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/pyasn1-0.4.8.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/python-dateutil-2.8.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/rsa-3.4.2.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/s3transfer-0.3.3.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/setup/setuptools_scm-3.3.3.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/setup/wheel-0.33.6.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/six-1.14.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/urllib3-1.25.7.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/urllib3-1.25.8.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/awscli-bundle/packages/virtualenv-16.7.8.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requests_test.py.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/requests_test.py.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whereMyPost/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/whereMyPost/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +132,7 @@
       <workItem from="1580705732731" duration="9295000" />
       <workItem from="1580814773477" duration="54000" />
       <workItem from="1580827744263" duration="12333000" />
+      <workItem from="1581067982087" duration="2707000" />
     </task>
     <servers />
   </component>
@@ -118,10 +143,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580557287699">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="1121" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581069488415">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1580557287698" />
+    <state x="1121" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057@0.23.1920.1057" timestamp="1581069488415" />
     <state width="918" height="230" key="GridCell.Tab.0.bottom" timestamp="1578908060475">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

@@ -1,10 +1,8 @@
 # 뷰에 쓰는 크롤링함수 모았음
 # 뷰에 쓰는 크롤링함수 모았음
-from selenium import webdriver
+
 from bs4 import BeautifulSoup
-import time
 import requests
-import re
 
 
 def postview(post_company, post_number):
