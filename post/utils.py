@@ -1,9 +1,8 @@
-# 뷰에 쓰는 크롤링함수 모았음
+뷰에 쓰는 크롤링함수 모았음
 # 뷰에 쓰는 크롤링함수 모았음
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
-import requests
 
 
 def postview(post_company='CJ대한통운', post_number='349159576510'):
@@ -92,7 +91,7 @@ def postview(post_company='CJ대한통운', post_number='349159576510'):
     if post_company == '우체국택배':   #1415705137861
         '''
         #print > div.h4_wrap.ma_t_5 > table > tbody > tr:nth-child(1)
-        
+
         '''
 
 

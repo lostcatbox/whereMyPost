@@ -25,7 +25,7 @@ SECRET_KEY = '1ig^c=(e8a-%f7%k94p*pqk!(v2@amcov+pc@!7=3#(9k671)k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['whereMyPost.mpjecsjwhp.ap-northeast-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['django-env.cwadf2395e.ap-northeast-2.elasticbeanstalk.com','127.0.0.1']
 
 
 # Application definition
