@@ -141,7 +141,7 @@ def postview(post_company, post_number):
 
         s = requests.Session()
         req = s.get('https://www.ilogen.com/web/personal/tkSearch')
-        post_number = '/' + '95638397046'
+        post_number = '/' + post_number
 
         req = s.get('https://www.ilogen.com/m/personal/trace' + post_number)
         html = req.text
