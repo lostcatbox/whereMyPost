@@ -203,6 +203,7 @@ def postview(post_company, post_number):
         post_all_detail = post_list[0]
 
         print(post_all_detail)
+        return post_all_detail
 
     if post_company == 'EMS':  # EB709865140CN
 
