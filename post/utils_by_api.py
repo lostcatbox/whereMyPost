@@ -89,10 +89,10 @@ def postview(post_company, post_number):
 
         data = {
             'sel_wbl_num1': '0',
-            'wbl_num': '507696243040'
+            'wbl_num': post_number
         }
         params = (
-            ('wbl_num', '507696243040'),
+            ('wbl_num', post_number),
         )
 
         req = s.post('https://www.hanjin.co.kr/Delivery_html/inquiry/result_waybill.jsp', params=params, data=data)
@@ -229,7 +229,7 @@ def postview(post_company, post_number):
         req = s.get('https://service.epost.go.kr/trace.RetrieveEmsRigiTrace.comm', headers=headers)
 
         data = {
-            'POST_CODE': 'EB709865140CN',
+            'POST_CODE': post_number,
             'displayHeader': ''
         }
 
