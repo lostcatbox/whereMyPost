@@ -160,6 +160,50 @@ def postview(post_company, post_number):
         print(post_all_detail)
         return post_all_detail
 
+    if post_company == 'CVSNet':    #363217073274
+
+        s = requests.Session()
+        req = s.get('https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do')
+
+        headers = {
+            'Connection': 'keep-alive',
+            'Pragma': 'no-cache',
+            'Cache-Control': 'no-cache',
+            'Upgrade-Insecure-Requests': '1',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36',
+            'Sec-Fetch-Dest': 'document',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Sec-Fetch-Site': 'same-origin',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-User': '?1',
+            'Referer': 'https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
+        }
+
+        params = (
+            ('dlvry_type', 'domestic'),
+            ('invoice_no', post_number),
+            ('reservedNo', ''),
+            ('rtnUrl', '/reservation-inquiry/delivery/index.do?dlvry_type=domestic&invoice_no=&srch_type=01'),
+            ('srch_type', '01'),
+        )
+
+        req = s.get('https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do', headers=headers, params=params)
+
+        html = req.text
+        soup = BeautifulSoup(html, 'html.parser')
+        s.cookies.clear()
+        post_detail = soup.select('#div_result > div > div > div.deliveryInfo2 > ul > li')
+
+        post_list = []
+
+        for x in post_detail:
+            post_list.append(
+                x.text.replace("\r", "").replace("\t", "").replace("\n", "").replace("\xa0", "").replace(" ", ""))
+        post_all_detail = post_list[0]
+
+        print(post_all_detail)
+
     if post_company == 'EMS':  # EB709865140CN
 
         s = requests.Session()
