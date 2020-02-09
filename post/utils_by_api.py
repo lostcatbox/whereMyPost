@@ -284,6 +284,7 @@ def postview(post_company, post_number):
 
     if post_company == 'DHL':  # 7694274276 #GM295322752002026135
 
+        s = requests.Session()
         headers = {
             'Connection': 'keep-alive',
             'Pragma': 'no-cache',
@@ -299,22 +300,25 @@ def postview(post_company, post_number):
         }
 
         params = (
-            ('trackingNumber', str(post_number)),
+            ('trackingNumber', post_number),
             ('language', 'ko'),
             ('requesterCountryCode', 'KR'),
         )
+        try:
+            xreq = s.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+            req = s.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+            s.cookies.clear()
+            json = req.json()["shipments"][0]
+            service_name = json["service"]
+            timestamp = json["status"]["timestamp"]
+            status = json["status"]["status"]
 
+            post_all_detail = [service_name, timestamp, status]
+            print(post_all_detail)
 
-        req = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
-        json = req.json()["shipments"][0]
-        service_name = json["service"]
-        timestamp = json["status"]["timestamp"]
-        status = json["status"]["status"]
-
-        post_all_detail = [service_name, timestamp, status]
-        print(post_all_detail)
-        return post_all_detail
-
+        except KeyError:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            print(post_all_detail)
 
     # if post_company == 'Fedex':  # 110738916651
     #
