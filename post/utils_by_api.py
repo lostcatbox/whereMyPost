@@ -36,24 +36,26 @@ def postview(post_company, post_number):
             '_csrf': csrf['value'],
             'paramInvcNo': post_number
         }
+        try:
 
-        html = s.post('https://www.cjlogistics.com/ko/tool/parcel/tracking-detail', headers=headers,
-                             data=data)
-        s.cookies.clear()
-        raw = html.json()
-        detail = raw["parcelDetailResultMap"]["resultList"]
-        print(detail)
+            html = s.post('https://www.cjlogistics.com/ko/tool/parcel/tracking-detail', headers=headers,
+                                 data=data)
+            s.cookies.clear()
+            raw = html.json()
+            detail = raw["parcelDetailResultMap"]["resultList"]
+            print(detail)
 
-        post_infor = detail[0]["crgNm"]
-        post_arrived_time = detail[0]["dTime"]
-        post_place = detail[0]["regBranNm"]
-        post_status = detail[0]["scanNm"]
+            post_infor = detail[0]["crgNm"]
+            post_arrived_time = detail[0]["dTime"]
+            post_place = detail[0]["regBranNm"]
+            post_status = detail[0]["scanNm"]
 
-        post_all_detail = [post_infor, post_arrived_time ,post_place, post_status]
+            post_all_detail = [post_infor, post_arrived_time ,post_place, post_status]
 
-        if (post_all_detail):
             return post_all_detail
-        else:
+
+
+        except IndexError:
             post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
             return post_all_detail
 
@@ -182,7 +184,7 @@ def postview(post_company, post_number):
             post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
             return post_all_detail
 
-    if post_company == 'CVSNet':    #363217073274
+    if post_company == 'CVSNet':    #363217073274 #null
 
         s = requests.Session()
         req = s.get('https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do')
@@ -209,29 +211,27 @@ def postview(post_company, post_number):
             ('rtnUrl', '/reservation-inquiry/delivery/index.do?dlvry_type=domestic&invoice_no=&srch_type=01'),
             ('srch_type', '01'),
         )
+        try:
+            req = s.get('https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do', headers=headers, params=params)
 
-        req = s.get('https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do', headers=headers, params=params)
+            html = req.text
+            soup = BeautifulSoup(html, 'html.parser')
+            s.cookies.clear()
+            post_detail = soup.select('#div_result > div > div > div.deliveryInfo2 > ul > li')
 
-        html = req.text
-        soup = BeautifulSoup(html, 'html.parser')
-        s.cookies.clear()
-        post_detail = soup.select('#div_result > div > div > div.deliveryInfo2 > ul > li')
+            post_list = []
 
-        post_list = []
+            for x in post_detail:
+                post_list.append(
+                    x.text.replace("\r", "").replace("\t", "").replace("\n", "").replace("\xa0", "").replace(" ", ""))
+            post_all_detail = post_list[0]
 
-        for x in post_detail:
-            post_list.append(
-                x.text.replace("\r", "").replace("\t", "").replace("\n", "").replace("\xa0", "").replace(" ", ""))
-        post_all_detail = post_list[0]
-
-        print(post_all_detail)
-        if (post_all_detail):
+            print(post_all_detail)
 
             return post_all_detail
-        else:
+        except IndexError:
             post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
             return post_all_detail
-
     if post_company == 'EMS':  # EB709865140CN
 
         s = requests.Session()
@@ -304,20 +304,22 @@ def postview(post_company, post_number):
             ('requesterCountryCode', 'KR'),
         )
 
-        req = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
-        json = req.json()["shipments"][0]
-        service_name = json["service"]
-        timestamp = json["status"]["timestamp"]
-        status = json["status"]["status"]
+        try:
 
-        post_all_detail = [service_name, timestamp, status]
-        print(post_all_detail)
 
-        if (post_all_detail):
+            req = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+            json = req.json()["shipments"][0]
+            service_name = json["service"]
+            timestamp = json["status"]["timestamp"]
+            status = json["status"]["status"]
 
+            post_all_detail = [service_name, timestamp, status]
+            print(post_all_detail)
             return post_all_detail
-        else:
+
+        except IndexError:
             post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
 
     # if post_company == 'Fedex':  # 110738916651
