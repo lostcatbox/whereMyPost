@@ -299,7 +299,7 @@ def postview(post_company, post_number):
         }
 
         params = (
-            ('trackingNumber', post_number),
+            ('trackingNumber', str(post_number)),
             ('language', 'ko'),
             ('requesterCountryCode', 'KR'),
         )
