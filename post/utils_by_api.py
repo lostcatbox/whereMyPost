@@ -51,8 +51,12 @@ def postview(post_company, post_number):
 
         post_all_detail = [post_infor, post_arrived_time ,post_place, post_status]
 
-        return post_all_detail
+        if (post_all_detail):
 
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
     if post_company == '우체국택배':  # 1415705137861
 
@@ -80,7 +84,12 @@ def postview(post_company, post_number):
 
         print(post_all_detail)
 
-        return post_all_detail
+        if (post_all_detail):
+
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
     if post_company == '한진택배':  # 507696243040
 
@@ -109,7 +118,12 @@ def postview(post_company, post_number):
         post_all_detail = post_list[-4:]
 
         print(post_all_detail)
-        return post_all_detail
+        if (post_all_detail):
+
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
     if post_company == '롯데택배':  # 233548940306
 
@@ -134,8 +148,12 @@ def postview(post_company, post_number):
         post_all_detail = post_list[-4:]
 
         print(post_all_detail)
+        if (post_all_detail):
 
-        return post_all_detail
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
     if post_company == '로젠택배':  # 95638397046
 
@@ -158,7 +176,12 @@ def postview(post_company, post_number):
         post_all_detail = post_list[-6:]
 
         print(post_all_detail)
-        return post_all_detail
+        if (post_all_detail):
+
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
     if post_company == 'CVSNet':    #363217073274
 
@@ -203,7 +226,12 @@ def postview(post_company, post_number):
         post_all_detail = post_list[0]
 
         print(post_all_detail)
-        return post_all_detail
+        if (post_all_detail):
+
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
     if post_company == 'EMS':  # EB709865140CN
 
@@ -248,7 +276,12 @@ def postview(post_company, post_number):
         post_all_detail = post_list[-1:]
 
         print(post_all_detail)
-        return post_all_detail
+        if (post_all_detail):
+
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+            return post_all_detail
 
     if post_company == 'DHL':  # 7694274276 #GM295322752002026135
 
@@ -281,7 +314,11 @@ def postview(post_company, post_number):
         post_all_detail = [service_name, timestamp, status]
         print(post_all_detail)
 
-        return post_all_detail
+        if (post_all_detail):
+
+            return post_all_detail
+        else:
+            post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
 
 
     # if post_company == 'Fedex':  # 110738916651
