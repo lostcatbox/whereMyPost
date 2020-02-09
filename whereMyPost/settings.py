@@ -25,7 +25,7 @@ SECRET_KEY = '1ig^c=(e8a-%f7%k94p*pqk!(v2@amcov+pc@!7=3#(9k671)k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['whereMyPost-env.w7sbrgqpgk.ap-northeast-2.elasticbeanstalk.com']
 
 
 # Application definition
