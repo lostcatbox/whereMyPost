@@ -306,7 +306,7 @@ def postview(post_company, post_number):
         )
         try:
             req = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
-            time.sleep(2)
+            time.sleep(4)
             s.cookies.clear()
             json = req.json()["shipments"][0]
             service_name = json["service"]
