@@ -52,7 +52,6 @@ def postview(post_company, post_number):
         post_all_detail = [post_infor, post_arrived_time ,post_place, post_status]
 
         if (post_all_detail):
-
             return post_all_detail
         else:
             post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
