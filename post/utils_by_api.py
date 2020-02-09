@@ -3,6 +3,7 @@
 
 from bs4 import BeautifulSoup
 import requests
+import time
 
 
 def postview(post_company, post_number):
@@ -284,7 +285,6 @@ def postview(post_company, post_number):
 
     if post_company == 'DHL':  # 7694274276 #GM295322752002026135
 
-        s = requests.Session()
         headers = {
             'Connection': 'keep-alive',
             'Pragma': 'no-cache',
@@ -305,8 +305,8 @@ def postview(post_company, post_number):
             ('requesterCountryCode', 'KR'),
         )
         try:
-            xreq = s.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
-            req = s.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+            req = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+            time.sleep(2)
             s.cookies.clear()
             json = req.json()["shipments"][0]
             service_name = json["service"]
