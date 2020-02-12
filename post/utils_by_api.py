@@ -35,7 +35,7 @@ def postview(post_company, post_number):
 
         data = {
             '_csrf': csrf['value'],
-            'paramInvcNo': post_number
+            'paramInvcNo': post_number.replace("-","")
         }
         try:
 
@@ -66,7 +66,7 @@ def postview(post_company, post_number):
         req = s.get('https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm')
 
         data = {
-            'sid1': post_number,
+            'sid1': post_number.replace("-",""),
         }
 
         req = s.post('https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm',
@@ -100,10 +100,10 @@ def postview(post_company, post_number):
 
         data = {
             'sel_wbl_num1': '0',
-            'wbl_num': post_number
+            'wbl_num': post_number.replace("-","")
         }
         params = (
-            ('wbl_num', post_number),
+            ('wbl_num', post_number.replace("-","")),
         )
 
         req = s.post('https://www.hanjin.co.kr/Delivery_html/inquiry/result_waybill.jsp', params=params, data=data)
@@ -133,7 +133,7 @@ def postview(post_company, post_number):
         req = s.get('https://www.lotteglogis.com/home/reservation/tracking/')
 
         data = {
-            'InvNo': post_number,
+            'InvNo': post_number.replace("-",""),
         }
 
         req = s.post('https://www.lotteglogis.com/home/reservation/tracking/linkView/',
@@ -161,9 +161,9 @@ def postview(post_company, post_number):
 
         s = requests.Session()
         req = s.get('https://www.ilogen.com/web/personal/tkSearch')
-        post_number = '/' + post_number
+        post_number = '/' + post_number.replace("-","")
 
-        req = s.get('https://www.ilogen.com/m/personal/trace' + post_number)
+        req = s.get('https://www.ilogen.com/m/personal/trace' + post_number.replace("-",""))
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
         s.cookies.clear()
@@ -207,7 +207,7 @@ def postview(post_company, post_number):
 
         params = (
             ('dlvry_type', 'domestic'),
-            ('invoice_no', post_number),
+            ('invoice_no', post_number.replace("-","")),
             ('reservedNo', ''),
             ('rtnUrl', '/reservation-inquiry/delivery/index.do?dlvry_type=domestic&invoice_no=&srch_type=01'),
             ('srch_type', '01'),
@@ -257,7 +257,7 @@ def postview(post_company, post_number):
         req = s.get('https://service.epost.go.kr/trace.RetrieveEmsRigiTrace.comm', headers=headers)
 
         data = {
-            'POST_CODE': post_number,
+            'POST_CODE': post_number.replace("-",""),
             'displayHeader': ''
         }
 
