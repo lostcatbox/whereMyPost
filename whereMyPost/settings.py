@@ -40,7 +40,7 @@ def get_secret(setting, secrets=secrets):
 
 SECRET_KEY = get_secret("SECRET_KEY")
 
-ALLOWED_HOSTS = [SECRET_KEY]
+ALLOWED_HOSTS = [SECRET_KEY, '172.31.40.150']
 
 
 # Application definition
