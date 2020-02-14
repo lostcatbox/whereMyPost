@@ -284,8 +284,7 @@ def postview(post_company, post_number):
             return post_all_detail
 
     if post_company == 'DHL':  # 7694274276 #GM295322752002026135
-
-        post_number = '7694274376'
+        
         headers = {
             'Connection': 'keep-alive',
             'Pragma': 'no-cache',
