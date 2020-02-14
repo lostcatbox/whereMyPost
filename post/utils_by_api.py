@@ -304,22 +304,22 @@ def postview(post_company, post_number):
              ('language', 'ko'),
              ('requesterCountryCode', 'KR'),
          )
-         response = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
-         json_data = response.json()
-         post_basic = json_data['shipments'][0]
-         service = post_basic["service"]
-         service_time = post_basic["status"]["timestamp"]
-         service_status = post_basic["status"]["status"]
 
          try:
+             response = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+             json_data = response.json()
+             post_basic = json_data['shipments'][0]
+             service = post_basic["service"]
+             service_time = post_basic["status"]["timestamp"]
+             service_status = post_basic["status"]["status"]
 
              post_all_detail = [service, service_time, service_status]
 
              return post_all_detail
 
          except KeyError:
-                post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
-                return post_all_detail
+             post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+             return post_all_detail
 
 
 
