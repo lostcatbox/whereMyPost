@@ -283,41 +283,46 @@ def postview(post_company, post_number):
             post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
             return post_all_detail
 
-    # if post_company == 'DHL':  # 7694274276 #GM295322752002026135
-    #
-    #     headers = {
-    #         'Connection': 'keep-alive',
-    #         'Pragma': 'no-cache',
-    #         'Cache-Control': 'no-cache',
-    #         'Upgrade-Insecure-Requests': '1',
-    #         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-    #         'Sec-Fetch-User': '?1',
-    #         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-    #         'Sec-Fetch-Site': 'none',
-    #         'Sec-Fetch-Mode': 'navigate',
-    #         'Accept-Encoding': 'gzip, deflate, br',
-    #         'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
-    #     }
-    #
-    #     params = (
-    #         ('trackingNumber', post_number),
-    #         ('language', 'ko'),
-    #         ('requesterCountryCode', 'KR'),
-    #     )
-    #     try:
-    #         req = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
-    #         s.cookies.clear()
-    #         json = req.json()["shipments"][0]
-    #         service_name = json["service"]
-    #         timestamp = json["status"]["timestamp"]
-    #         status = json["status"]["status"]
-    #
-    #         post_all_detail = [service_name, timestamp, status]
-    #         print(post_all_detail)
-    #
-    #     except KeyError:
-    #         post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
-    #         print(post_all_detail)
+    if post_company == 'DHL':  # 7694274276 #GM295322752002026135
+
+         headers = {
+             'Connection': 'keep-alive',
+             'Pragma': 'no-cache',
+             'Cache-Control': 'no-cache',
+             'Upgrade-Insecure-Requests': '1',
+             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36',
+             'Sec-Fetch-Dest': 'document',
+             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+             'Sec-Fetch-Site': 'none',
+             'Sec-Fetch-Mode': 'navigate',
+             'Sec-Fetch-User': '?1',
+             'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
+         }
+
+         params = (
+             ('trackingNumber', post_number),
+             ('language', 'ko'),
+             ('requesterCountryCode', 'KR'),
+         )
+         response = requests.get('https://www.logistics.dhl/utapi', headers=headers, params=params)
+         json_data = response.json()
+         post_basic = json_data['shipments'][0]
+         service = post_basic["service"]
+         service_time = post_basic["status"]["timestamp"]
+         service_status = post_basic["status"]["status"]
+
+         try:
+
+             post_all_detail = [service, service_time, service_status]
+
+             return post_all_detail
+
+         except KeyError:
+                post_all_detail = "택배회사, 송장번호가 올바르지 않거나 아직 택배사 서버에서 조회되지 않습니다."
+                return post_all_detail
+
+
+
 
     # if post_company == 'Fedex':  # 110738916651
     #
