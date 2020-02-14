@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.ebignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post/utils_by_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/utils_by_api.py" afterDir="false" />
     </list>
@@ -120,7 +122,8 @@
       <workItem from="1581353919024" duration="1116000" />
       <workItem from="1581397180783" duration="553000" />
       <workItem from="1581471087075" duration="2917000" />
-      <workItem from="1581664284424" duration="7695000" />
+      <workItem from="1581664284424" duration="8018000" />
+      <workItem from="1581697037275" duration="25000" />
     </task>
     <servers />
   </component>
@@ -131,11 +134,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581665270774">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="1121" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581697048113">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="841" y="303" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1581665270774" />
-    <state x="1121" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057@0.23.1920.1057" timestamp="1581138907291" />
+    <state x="1121" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057@0.23.1920.1057" timestamp="1581697048113" />
     <state width="918" height="230" key="GridCell.Tab.0.bottom" timestamp="1578908060475">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
