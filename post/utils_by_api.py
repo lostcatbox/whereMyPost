@@ -46,10 +46,10 @@ def postview(post_company, post_number):
             detail = raw["parcelDetailResultMap"]["resultList"]
             print(detail)
 
-            post_infor = detail[0]["crgNm"]
-            post_arrived_time = detail[0]["dTime"]
-            post_place = detail[0]["regBranNm"]
-            post_status = detail[0]["scanNm"]
+            post_infor = detail[-1]["crgNm"]
+            post_arrived_time = detail[-1]["dTime"]
+            post_place = detail[-1]["regBranNm"]
+            post_status = detail[-1]["scanNm"]
 
             post_all_detail = [post_infor, post_arrived_time ,post_place, post_status]
 
