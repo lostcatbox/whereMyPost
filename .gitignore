@@ -1,5 +1,5 @@
 secrets.json
-/.ebextensions
-/.elasticbeanstalk
-/.idea
-/venv
+.ebextensions
+.elasticbeanstalk
+.idea
+.venv
