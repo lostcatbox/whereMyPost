@@ -2,4 +2,3 @@ secrets.json
 .ebextensions
 .elasticbeanstalk
 .idea
-.venv
