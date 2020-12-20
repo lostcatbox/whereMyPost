@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aa1b6933-9043-4073-9eba-ecd4c79cdb66" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/utils_by_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/utils_by_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/requests_test.py-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/requests_test.py-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requests_test.py.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/requests_test.py.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +128,7 @@
       <workItem from="1582437190403" duration="32000" />
       <workItem from="1583279622239" duration="618000" />
       <workItem from="1583324588593" duration="10000" />
-      <workItem from="1586175765433" duration="50000" />
+      <workItem from="1586175765433" duration="2029000" />
     </task>
     <servers />
   </component>
