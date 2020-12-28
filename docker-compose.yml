@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+        wheremypost:
+                container_name: wheremypost
+                build: .
+                command: gunicorn whereMyPost.wsgi:application --bind 0.0.0.0:7979
+                volumes:
+                        - .:/app
+                        - ./staticfiles:/staticfiles
+                expose:
+                        - "7979"
+networks:
+        default:
+                external:
+                        name: proxy_default
